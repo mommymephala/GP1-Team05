@@ -66,8 +66,8 @@ public class PlayerMovement1 : MonoBehaviour
     {
         HandleMovement();
         HandleJump();
-        if(Input.GetKeyDown(KeyCode.Escape))
-            UiManager.instance.SwitchtoMode(2);
+        //if(Input.GetKeyDown(KeyCode.Escape))
+        //    UiManager.instance.SwitchtoMode(2); Now this in UIManager.cs
         if(clampY)
             transform.position = new Vector3(transform.position.x, 1f, transform.position.z);
 

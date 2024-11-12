@@ -9,6 +9,8 @@ public class UiManager : MonoBehaviour
      
     public static UiManager instance;
     public List<GameObject> modes;
+
+    private bool isPaused = false;
     // Start is called before the first frame update
 
     private void Awake()
@@ -26,14 +28,32 @@ public class UiManager : MonoBehaviour
     void Start()
     {
         SwitchtoMode(0);
+        Time.timeScale = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            TogglePause();
+        }
     }
 
+    public void TogglePause()
+    {
+        isPaused = !isPaused;
+        Time.timeScale = isPaused ? 0 : 1;
+
+        if (isPaused)
+        {
+            SwitchtoMode(2); 
+        }
+        else
+        {
+            SwitchtoMode(0);
+        }
+    }
 
     public void SwitchtoMode(int mode)
     {
@@ -59,5 +79,6 @@ public class UiManager : MonoBehaviour
     public void BacktoMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
+        Time.timeScale = 1;
     }
 }

@@ -18,6 +18,11 @@ public class PlayerMovement1 : MonoBehaviour
     public float decelerationTime;
     public float decelerationMultiplier=1f;
     public Slider boostSlider;
+    public GameObject groundObj;
+    public float minEmission;
+    public float maxEmission;
+    
+    private Material material;
     
     [HideInInspector]public Animator animator;
     
@@ -46,6 +51,7 @@ public class PlayerMovement1 : MonoBehaviour
     
     private void Start()
     {
+        material=GetComponentInChildren<SkinnedMeshRenderer>().material;
         currentMultiplier = 1f;
         rb = GetComponent<Rigidbody>();
         if (rb == null)
@@ -68,8 +74,7 @@ public class PlayerMovement1 : MonoBehaviour
         HandleJump();
         if(Input.GetKeyDown(KeyCode.Escape))
             UiManager.instance.SwitchtoMode(2);
-        if(clampY)
-            transform.position = new Vector3(transform.position.x, 1f, transform.position.z);
+      
 
     }
 
@@ -201,6 +206,7 @@ public class PlayerMovement1 : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
+            groundObj = collision.gameObject;
             isGrounded = true;
             jumpCount = 0;
             animator?.SetBool("IsJumping", false);
@@ -223,6 +229,9 @@ public class PlayerMovement1 : MonoBehaviour
             time += Time.deltaTime;
             t = time / accelerationTime;
             previousAcceleration = t;
+            //material.SetColor("_EmissionColor", material.GetColor("_EmissiveColor")*Mathf.Lerp(minEmission, maxEmission, accelerationCurve.Evaluate(t)));
+            
+            print(material.GetColor("_EmissionColor"));
             currentVelocity = Mathf.Lerp(defaultVelocity, maxVelocity, accelerationCurve.Evaluate(t));
             yield return null;
         }
@@ -248,6 +257,7 @@ public class PlayerMovement1 : MonoBehaviour
             time += Time.deltaTime*currentMultiplier;
             t = time / decelerationTime;
             previousDeceleration = t;
+            //material.SetColor("_EmissionColor", material.GetColor("_EmissionColor")*Mathf.Lerp(maxEmission, minEmission, accelerationCurve.Evaluate(t)));
             currentVelocity = Mathf.Lerp(maxVelocity, defaultVelocity, decelerationCurve.Evaluate(t));
             yield return null;
         }

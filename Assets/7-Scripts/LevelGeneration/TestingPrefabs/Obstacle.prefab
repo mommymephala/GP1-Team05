@@ -49,6 +49,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocityReduction: 5
+  blinkDuration: 0.5
+  blinkCount: 3
 --- !u!65 &3567876501816386310
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -254,7 +256,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7eaee607a4383954fa24b568539df692, type: 2}
+  - {fileID: 2100000, guid: cd745e74f9408e546847afcd5a375624, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

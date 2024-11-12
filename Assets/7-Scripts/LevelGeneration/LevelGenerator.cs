@@ -11,7 +11,7 @@ public class LevelGenerator : MonoBehaviour
     public List<LevelComponent> spawnedTiles;
     public GameObject wavePrefab;
     public float timeBetweenSpawns;
-    
+    public GameObject player;
     
     public Transform lastSocket;
 
@@ -30,6 +30,7 @@ public class LevelGenerator : MonoBehaviour
 
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         GenerateTile();
         StartCoroutine(GenerateWaveRoutine());
     }

@@ -77,9 +77,9 @@ public class BlackHoleTracker : MonoBehaviour
     private void Update()
     {
         if (isConsumingPlayer || vignette == null || chromaticAberration == null) return;
-        rb.velocity = new Vector3(0, 0,followSpeed);
+        rb.velocity = new Vector3(0,0,followSpeed);
         if(Vector3.Distance(gameObject.transform.position, player.position)<maxDistance)
-            gameObject.transform.position = new Vector3(gameObject.transform.position.x, player.position.y, player.position.z-maxDistance);
+            gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, player.position.z-maxDistance);
         
         float playerSpeed = playerMovement.currentVelocity;
 

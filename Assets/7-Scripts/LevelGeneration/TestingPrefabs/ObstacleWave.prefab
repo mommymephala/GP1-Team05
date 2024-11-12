@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacle: {fileID: 2184888771425201091, guid: a1ff16168ee62db428dfcdea0a372399, type: 3}
   waveRows: 5
+  waveColumns: 2
   spacing: 20
   possiblePoints: f4fffffff6fffffff8fffffffafffffffcfffffffeffffff00000000020000000400000006000000080000000a0000000c000000
   obstacleSpeed: 20

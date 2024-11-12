@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2bf86d316aa91564c9c10d51d72a0725
+guid: e4efbb1def4f82e44bcabf84e83fb360
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -33,7 +33,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Dash
+      name: Character_Rig|Dash
       takeName: Character_Rig|Dash
       internalID: 4989731226801484236
       firstFrame: 0
@@ -44,7 +44,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -62,7 +62,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Dash2Main
+      name: Character_Rig|Dash2Main
       takeName: Character_Rig|Dash2Main
       internalID: -7431012908478211065
       firstFrame: 0
@@ -91,7 +91,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Jump2Main
+      name: Character_Rig|Jump2Main
       takeName: Character_Rig|Jump2Main
       internalID: 4451899675095582680
       firstFrame: 0
@@ -120,7 +120,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Jump_Loop
+      name: Character_Rig|Jump_Float
       takeName: Character_Rig|Jump_Float
       internalID: -1432140182083597547
       firstFrame: 0
@@ -131,7 +131,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -149,7 +149,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Left2Main
+      name: Character_Rig|Left2Main
       takeName: Character_Rig|Left2Main
       internalID: -3190383527834246246
       firstFrame: 0
@@ -178,7 +178,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Left_Loop
+      name: Character_Rig|Left_Idle
       takeName: Character_Rig|Left_Idle
       internalID: 3680087972693840538
       firstFrame: 0
@@ -189,7 +189,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -207,7 +207,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Main2Dash
+      name: Character_Rig|Main2Dash
       takeName: Character_Rig|Main2Dash
       internalID: 4642950667949995811
       firstFrame: 0
@@ -236,10 +236,10 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Main2Jump
+      name: Character_Rig|Main2Jump
       takeName: Character_Rig|Main2Jump
       internalID: -4904658941701933684
-      firstFrame: 25
+      firstFrame: 0
       lastFrame: 50
       wrapMode: 0
       orientationOffsetY: 0
@@ -265,7 +265,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Main2Left
+      name: Character_Rig|Main2Left
       takeName: Character_Rig|Main2Left
       internalID: -5282631327880012715
       firstFrame: 0
@@ -294,7 +294,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Main2Right
+      name: Character_Rig|Main2Right
       takeName: Character_Rig|Main2Right
       internalID: 7258499460511350240
       firstFrame: 0
@@ -323,7 +323,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Main_Loop_1/2
+      name: Character_Rig|Main_1
       takeName: Character_Rig|Main_1
       internalID: 7608013342258280106
       firstFrame: 0
@@ -334,7 +334,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -352,7 +352,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Main_Loop_2/2
+      name: Character_Rig|Main_2
       takeName: Character_Rig|Main_2
       internalID: -328430334412137931
       firstFrame: 0
@@ -363,7 +363,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -381,7 +381,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Right2Main
+      name: Character_Rig|Right2Main
       takeName: Character_Rig|Right2Main
       internalID: 5786132814573724972
       firstFrame: 0
@@ -410,7 +410,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Right_Loop
+      name: Character_Rig|Right_Idle
       takeName: Character_Rig|Right_Idle
       internalID: -3792713585745587988
       firstFrame: 0
@@ -421,7 +421,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -438,7 +438,7 @@ ModelImporter:
       maskType: 3
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
-    isReadable: 1
+    isReadable: 0
   meshes:
     lODScreenPercentages: []
     globalScale: 1
@@ -459,7 +459,7 @@ ModelImporter:
     keepQuads: 0
     weldVertices: 1
     bakeAxisConversion: 0
-    preserveHierarchy: 1
+    preserveHierarchy: 0
     skinWeightsMode: 0
     maxBonesPerVertex: 4
     minBoneWeight: 0.001

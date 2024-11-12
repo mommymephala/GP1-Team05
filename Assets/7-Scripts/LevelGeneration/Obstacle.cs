@@ -28,7 +28,7 @@ public class Obstacle : MonoBehaviour
 
         if (playerRenderer == null)
         {
-            Debug.LogError("Player Renderer not found.");
+            Debug.LogError("Player Renderer not found. TRYING SOMETHING");
             yield break;
         }
 

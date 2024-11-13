@@ -1,6 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/UI Toolkit/Light Meter.meta
 guid: ac9343b1a2fe7ab419e2855074f61d7c
 folderAsset: yes
+========
+guid: 269b9e9160656934a8ca434a8ff642c7
+>>>>>>>> github/Dennis:Assets/Scenes/Dennis_Test.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

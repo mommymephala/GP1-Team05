@@ -68,7 +68,7 @@ public class PlayerMovement1 : MonoBehaviour
         HandleJump();
         //if(Input.GetKeyDown(KeyCode.Escape))
         //    UiManager.instance.SwitchtoMode(2); Now this in UIManager.cs
-        if(clampY)
+        if (clampY)
             transform.position = new Vector3(transform.position.x, 1f, transform.position.z);
 
     }
@@ -77,11 +77,14 @@ public class PlayerMovement1 : MonoBehaviour
     private void HandleMovement()
     {
         float moveHorizontal = Input.GetAxis("Horizontal");
-        moveHorizontal = moveHorizontal * 0.5f;
+
+        float horizontalSpeedModifier = Mathf.Clamp(1 - (currentVelocity / maxVelocity), 0.3f, 1f);
+        moveHorizontal *= horizontalSpeedModifier;
+
         Vector3 movement = new Vector3(moveHorizontal, 0, 1) * currentVelocity;
-        
+
         animator?.SetInteger("Direction", 0);
-        if(Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A))
             animator?.SetInteger("Direction", 1);
         else if(Input.GetKey(KeyCode.D))
             animator?.SetInteger("Direction", 2);
@@ -179,6 +182,12 @@ public class PlayerMovement1 : MonoBehaviour
             jumpCount++;
             isGrounded = false;
         }
+
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            StopCoroutine(SmoothJump());
+            rb.velocity = new Vector3(rb.velocity.x, Mathf.Min(rb.velocity.y, 0), rb.velocity.z); // Ограничиваем вертикальную скорость
+        }
     }
 
     private IEnumerator SmoothJump()
@@ -186,7 +195,7 @@ public class PlayerMovement1 : MonoBehaviour
         float jumpTime = 0f;
 
         // Increase upward force for smooth jump
-        while (jumpTime < jumpDuration)
+        while (jumpTime < jumpDuration && Input.GetKey(KeyCode.Space))
         {
             rb.velocity = new Vector3(rb.velocity.x, jumpForce * (1 - (jumpTime / jumpDuration)), rb.velocity.z);
             jumpTime += Time.deltaTime;

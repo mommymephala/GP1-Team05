@@ -2141,6 +2141,11 @@ MonoBehaviour:
   - {fileID: 1518716521}
   - {fileID: 152611407}
   - {fileID: 1805925350}
+  SettingsUI: {fileID: 0}
+  CreditsUI: {fileID: 0}
+  scoreText: {fileID: 0}
+  gameOverText: {fileID: 0}
+  bestScoreText: {fileID: 0}
 --- !u!4 &659394876
 Transform:
   m_ObjectHideFlags: 0
@@ -2321,6 +2326,11 @@ MonoBehaviour:
   minFOV: 25
   maxFOV: 35
   maxSpeed: 50
+  maxmaxFOV: 85
+  particleSpeed: {fileID: 0}
+  shakeAmplitude: 2
+  shakeFrequency: 2
+  postProcessVolume: {fileID: 0}
   lerpSpeed: 4
   minYOffset: 2
   maxYOffset: 1.5
@@ -11811,6 +11821,9 @@ MonoBehaviour:
   decelerationTime: 5
   decelerationMultiplier: 2
   boostSlider: {fileID: 1947662375}
+  boostImage: {fileID: 0}
+  score: 0
+  scoreMultiplier: 0
   animator: {fileID: 0}
   previousAcceleration: 0
   previousDeceleration: 0
@@ -13380,8 +13393,8 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1b09da29b8f54cb4199231c6850c8b2d, type: 2}
-  - {fileID: 2100000, guid: f64617ffba6074448a42d230b2428db6, type: 2}
+  - {fileID: 2100000, guid: a884da21a5ba75241bfa422fd709d912, type: 2}
+  - {fileID: 2100000, guid: 2c56beed4c9d430459e58dffaff321f8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

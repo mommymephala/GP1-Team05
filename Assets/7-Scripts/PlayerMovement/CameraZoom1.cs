@@ -14,7 +14,9 @@ public class CameraZoom1 : MonoBehaviour
     public float minFOV = 50f;
     public float maxFOV = 70f;
     public float maxSpeed = 20f;
+    public float maxmaxFOV = 85f;
     public GameObject particleSpeed;
+    private MotionBlur motionBlur;
     public bool isShaking => PlayerMovement.currentVelocity >= 55f;     
     public float shakeAmplitude = 2.0f;
     public float shakeFrequency = 2.0f;
@@ -22,6 +24,7 @@ public class CameraZoom1 : MonoBehaviour
 
     private CinemachineComponentBase lensComponent;
     private CinemachineBasicMultiChannelPerlin perlin;
+
     public float lerpSpeed = 5f;
 
 
@@ -36,6 +39,7 @@ public class CameraZoom1 : MonoBehaviour
 
         perlin = VirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         Debug.Log(perlin);
+        postProcessVolume.profile.TryGet(out motionBlur);
         postProcessVolume.profile.TryGet(out chromaticAberration);
     }
 
@@ -44,6 +48,7 @@ public class CameraZoom1 : MonoBehaviour
         float currentSpeed = PlayerMovement.currentVelocity;
         float targetFOV = Mathf.Lerp(minFOV, maxFOV, currentSpeed / maxSpeed);
         VirtualCamera.m_Lens.FieldOfView = Mathf.Lerp(VirtualCamera.m_Lens.FieldOfView, targetFOV, lerpSpeed * Time.deltaTime);
+       
 
 
         float targetYOffset = Mathf.Lerp(minYOffset, maxYOffset, currentSpeed / maxSpeed);
@@ -63,10 +68,12 @@ public class CameraZoom1 : MonoBehaviour
             if (isShaking)
             {
                 Debug.Log("Shlomi");
-                perlin.m_AmplitudeGain = Mathf.Lerp(perlin.m_AmplitudeGain, shakeAmplitude, Time.deltaTime * 0.9f);
-                perlin.m_FrequencyGain = Mathf.Lerp(perlin.m_FrequencyGain, shakeFrequency, Time.deltaTime * 0.9f);
-                chromaticAberration.intensity.value = Mathf.Lerp(chromaticAberration.intensity.value, 1f, Time.deltaTime * 2);
+                perlin.m_AmplitudeGain = Mathf.Lerp(perlin.m_AmplitudeGain, shakeAmplitude, Time.deltaTime * 0.6f);
+                perlin.m_FrequencyGain = Mathf.Lerp(perlin.m_FrequencyGain, shakeFrequency, Time.deltaTime * 0.6f);
+                chromaticAberration.intensity.value = Mathf.Lerp(chromaticAberration.intensity.value, 1f, Time.deltaTime * 0.9f);
+                motionBlur.intensity.value = Mathf.Lerp(motionBlur.intensity.value, 0.65f,Time.deltaTime* 0.2f);
                 particleSpeed.SetActive(true);
+                maxFOV = Mathf.Lerp(maxFOV, maxmaxFOV, Time.deltaTime * 0.2f);
             }
             else
             {
@@ -74,7 +81,9 @@ public class CameraZoom1 : MonoBehaviour
                 perlin.m_AmplitudeGain = Mathf.Lerp(perlin.m_AmplitudeGain, 0f, Time.deltaTime * 5);
                 perlin.m_FrequencyGain = Mathf.Lerp(perlin.m_FrequencyGain, 0f, Time.deltaTime * 5);
                 chromaticAberration.intensity.value = Mathf.Lerp(chromaticAberration.intensity.value, 0f, Time.deltaTime * 2);
+                motionBlur.intensity.value = Mathf.Lerp(motionBlur.intensity.value, 0f,Time.deltaTime * 0.5f);
                 particleSpeed.SetActive(false);
+                maxFOV = Mathf.Lerp(maxFOV, maxFOV, Time.deltaTime * 2);
             }
         }
     }

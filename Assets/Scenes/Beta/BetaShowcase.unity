@@ -948,7 +948,7 @@ Transform:
   m_GameObject: {fileID: 198115380}
   serializedVersion: 2
   m_LocalRotation: {x: 0.1820081, y: 0.000000042146848, z: -0.0000000105367155, w: 0.98329705}
-  m_LocalPosition: {x: 0, y: 3.3, z: -6}
+  m_LocalPosition: {x: 0, y: 3.3899999, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1974,13 +1974,14 @@ MonoBehaviour:
   minFOV: 35
   maxFOV: 75
   maxSpeed: 60
+  maxmaxFOV: 85
   particleSpeed: {fileID: 1279412860}
-  shakeAmplitude: 0.02
+  shakeAmplitude: 0.025
   shakeFrequency: 10000
   postProcessVolume: {fileID: 1545874334}
   lerpSpeed: 4
   minYOffset: 1.5
-  maxYOffset: 1.3
+  maxYOffset: 1.2
 --- !u!114 &749475698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2323,7 +2324,7 @@ Transform:
   m_GameObject: {fileID: 803790836}
   serializedVersion: 2
   m_LocalRotation: {x: -0.000000013343318, y: -0.0000000842937, z: 7.077178e-16, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 1.09, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8662,7 +8663,7 @@ ParticleSystem:
     serializedVersion: 6
     enabled: 1
     type: 4
-    angle: 50
+    angle: 90
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 0
@@ -14408,7 +14409,7 @@ Transform:
   m_GameObject: {fileID: 1782563250}
   serializedVersion: 2
   m_LocalRotation: {x: 0.11750048, y: -0.000000044656595, z: 0.000000005283772, w: 0.99307287}
-  m_LocalPosition: {x: 0, y: 2.2, z: -5}
+  m_LocalPosition: {x: 0, y: 2.29, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -15729,7 +15730,7 @@ Transform:
   m_GameObject: {fileID: 2120524123}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 1.09, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -15910,7 +15911,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  accelerationTime: 7
+  accelerationTime: 6
   decelerationTime: 7
   decelerationMultiplier: 2
   boostSlider: {fileID: 1947662375}

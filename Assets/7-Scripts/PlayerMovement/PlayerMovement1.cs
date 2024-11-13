@@ -47,7 +47,7 @@ public class PlayerMovement1 : MonoBehaviour
     private int maxBoostCharges = 10; // Max boost charges
     private float boostDecayRate = 1f;
     private bool clampY;
-    
+    private float previousZ;
     
     private void Start()
     {
@@ -75,7 +75,7 @@ public class PlayerMovement1 : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Escape))
             UiManager.instance.SwitchtoMode(2);
       
-
+        
     }
 
 
@@ -92,10 +92,12 @@ public class PlayerMovement1 : MonoBehaviour
             animator?.SetInteger("Direction", 2);
         
         
-            
+        
         
         rb.velocity = new Vector3(movement.x, rb.velocity.y, movement.z);
-
+ 
+       
+        
         if (Input.GetKey(KeyCode.W)  && boostCharges > 0)
         {
 

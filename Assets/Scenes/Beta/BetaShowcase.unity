@@ -10970,8 +10970,8 @@ MonoBehaviour:
   maxVelocity: 50
   dashSpeed: 20
   dashCooldown: 0.5
-  jumpForce: 15
-  jumpDuration: 0.3
+  jumpForce: 18
+  jumpDuration: 0.4
   accelerationCurve:
     serializedVersion: 2
     m_Curve:

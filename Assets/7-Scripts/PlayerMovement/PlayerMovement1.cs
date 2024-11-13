@@ -77,7 +77,7 @@ public class PlayerMovement1 : MonoBehaviour
 
         score += scoreMultiplier * Time.deltaTime;
         UiManager.instance.UpdateScore(score);
-        boostImage.fillAmount = boostTimeRemaining*boostCharges/maxBoostTime;
+        boostImage.fillAmount = boostDecayRate*boostCharges/maxBoostTime;
     }
 
 
@@ -122,10 +122,9 @@ public class PlayerMovement1 : MonoBehaviour
                 boostCharges--;
                 boostTimeRemaining = boostDecayRate;
 
-                if (boostSlider != null)
-                {
-                    boostSlider.value = boostCharges;
-                }
+                
+                    
+                
             }
 
             
@@ -290,6 +289,15 @@ public class PlayerMovement1 : MonoBehaviour
         }
     }
 
+    public void StopAcceleration()
+    {
+        if (isAccelerating)
+        {
+            StopCoroutine(AccelRoutine);
+            isAccelerating = false;
+        } 
+            
+    }
 
 
 }

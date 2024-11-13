@@ -46,7 +46,7 @@ public class PlayerMovement1 : MonoBehaviour
     private float boostTimeRemaining = 0f; // Remaining time for boost decay
     private int maxBoostCharges = 10; // Max boost charges
     private float boostDecayRate = 1f;
-    private bool clampY;
+    
 
 
     private void Start()
@@ -73,8 +73,7 @@ public class PlayerMovement1 : MonoBehaviour
         HandleJump();
         //if(Input.GetKeyDown(KeyCode.Escape))
         //    UiManager.instance.SwitchtoMode(2); Now this in UIManager.cs
-        if (clampY)
-            transform.position = new Vector3(transform.position.x, 1f, transform.position.z);
+ 
 
         score += scoreMultiplier * Time.deltaTime;
         UiManager.instance.UpdateScore(score);
@@ -186,7 +185,7 @@ public class PlayerMovement1 : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && jumpCount < 1)
         {
-            clampY = false;
+           
             animator?.SetInteger("Direction", 0);
             StartCoroutine(SmoothJump());
             jumpCount++;
@@ -223,7 +222,7 @@ public class PlayerMovement1 : MonoBehaviour
             isGrounded = true;
             jumpCount = 0;
             animator?.SetBool("IsJumping", false);
-            clampY = true;
+            
         }
     }
 

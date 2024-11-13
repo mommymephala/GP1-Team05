@@ -2258,7 +2258,7 @@ MonoBehaviour:
   particleSpeed: {fileID: 0}
   shakeAmplitude: 2
   shakeFrequency: 2
-  postProcessVolume: {fileID: 1545874334}
+  postProcessVolume: {fileID: 0}
   lerpSpeed: 4
   minYOffset: 2
   maxYOffset: 1.5
@@ -10495,7 +10495,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Stupidly long number ;)
+  m_text: Numero Stupidamente troppo grosso che non ci sta nella UI
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a48f0dffcb2c48140b5972660931b7ec, type: 2}
   m_sharedMaterial: {fileID: 5168597403339273286, guid: a48f0dffcb2c48140b5972660931b7ec, type: 2}
@@ -11568,11 +11568,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2120524127}
-  - component: {fileID: 2120524124}
   - component: {fileID: 2120524130}
   - component: {fileID: 2120524128}
   - component: {fileID: 2120524131}
   - component: {fileID: 2120524132}
+  - component: {fileID: 2120524133}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -11580,29 +11580,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!136 &2120524124
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2120524123}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &2120524127
 Transform:
   m_ObjectHideFlags: 0
@@ -11689,8 +11666,8 @@ MonoBehaviour:
   maxVelocity: 50
   dashSpeed: 20
   dashCooldown: 0.5
-  jumpForce: 15
-  jumpDuration: 0.3
+  jumpForce: 18
+  jumpDuration: 0.4
   accelerationCurve:
     serializedVersion: 2
     m_Curve:
@@ -11768,6 +11745,27 @@ MonoBehaviour:
   previousAcceleration: 0
   previousDeceleration: 0
   currentVelocity: 0
+--- !u!65 &2120524133
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120524123}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1.513344, z: 1}
+  m_Center: {x: 0, y: -0.24332798, z: 0}
 --- !u!1 &2134397594
 GameObject:
   m_ObjectHideFlags: 0

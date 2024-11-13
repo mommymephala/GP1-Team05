@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using Cinemachine;
 public class PlayerMovement1 : MonoBehaviour
 {
     public float defaultVelocity = 10f;
@@ -42,8 +42,8 @@ public class PlayerMovement1 : MonoBehaviour
     private int maxBoostCharges = 10; // Max boost charges
     private float boostDecayRate = 1f;
     private bool clampY;
-    
-    
+
+
     private void Start()
     {
         currentMultiplier = 1f;
@@ -66,11 +66,11 @@ public class PlayerMovement1 : MonoBehaviour
     {
         HandleMovement();
         HandleJump();
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
             UiManager.instance.SwitchtoMode(2);
-        if(clampY)
+        if (clampY)
             transform.position = new Vector3(transform.position.x, 1f, transform.position.z);
-
+    
     }
 
 

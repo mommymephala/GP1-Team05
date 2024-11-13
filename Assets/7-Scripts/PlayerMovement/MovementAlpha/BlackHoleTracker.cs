@@ -55,7 +55,7 @@ public class BlackHoleTracker : MonoBehaviour
         }
         else
         {
-            chromaticAberration.intensity.value = 0f; // Start with no chromatic aberration
+           // chromaticAberration.intensity.value = 0f; // Start with no chromatic aberration
         }
 
         // Retrieve Cinemachine Noise Component for Camera Shake
@@ -84,16 +84,16 @@ public class BlackHoleTracker : MonoBehaviour
             vignette.intensity.value = vignetteIntensity;
 
             // Adjust chromatic aberration intensity
-            float chromaticIntensity = Mathf.Lerp(0, 1f, vignetteTimer / vignetteDarkenDuration);
-            chromaticAberration.intensity.value = chromaticIntensity;
+           float chromaticIntensity = Mathf.Lerp(0, 1f, vignetteTimer / vignetteDarkenDuration);
+           // chromaticAberration.intensity.value = chromaticIntensity;
 
             // Camera shake as player approaches death
-            if (noise != null && vignetteTimer >= vignetteDarkenDuration * 0.75f)
+   /*         if (noise != null && vignetteTimer >= vignetteDarkenDuration * 0.75f)
             {
                 // Only start shaking when vignette is 75% towards max
                 float shakeIntensity = Mathf.Lerp(0, maxShakeIntensity, (vignetteTimer - vignetteDarkenDuration * 0.75f) / (vignetteDarkenDuration * 0.25f));
                 noise.m_AmplitudeGain = shakeIntensity;
-            }
+            }*/
 
             // Trigger death camera effect if fully darkened
             if (vignetteTimer >= vignetteDarkenDuration)
@@ -108,13 +108,13 @@ public class BlackHoleTracker : MonoBehaviour
             vignetteTimer = Mathf.Clamp(vignetteTimer, 0, vignetteDarkenDuration);
 
             vignette.intensity.value = Mathf.Lerp(0, vignetteMaxIntensity, vignetteTimer / vignetteDarkenDuration);
-            chromaticAberration.intensity.value = Mathf.Lerp(0, 1f, vignetteTimer / vignetteDarkenDuration);
+           // chromaticAberration.intensity.value = Mathf.Lerp(0, 1f, vignetteTimer / vignetteDarkenDuration);
 
             // Reset camera shake when not close to death
-            if (noise != null)
+/*            if (noise != null)
             {
                 noise.m_AmplitudeGain = 0;
-            }
+            }*/
         }
     }
 
@@ -152,10 +152,10 @@ public class BlackHoleTracker : MonoBehaviour
                 vignette.intensity.value = Mathf.Lerp(vignette.intensity.value, vignetteMaxIntensity, t);
             }
 
-            if (chromaticAberration != null)
-            {
-                chromaticAberration.intensity.value = Mathf.Lerp(chromaticAberration.intensity.value, 1f, t);
-            }
+         //   if (chromaticAberration != null)
+          //  {
+               // chromaticAberration.intensity.value = Mathf.Lerp(chromaticAberration.intensity.value, 1f, t);
+          //  }
 
             yield return null;
         }

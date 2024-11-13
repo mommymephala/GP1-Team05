@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
@@ -12,6 +13,10 @@ public class UiManager : MonoBehaviour
     public List<GameObject> modes;
     public GameObject SettingsUI;
     public GameObject CreditsUI;
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI gameOverText;
+    public TextMeshProUGUI bestScoreText;
+    
     private void Awake()
     {
         if (instance != null && instance != this) 
@@ -78,5 +83,20 @@ public class UiManager : MonoBehaviour
     public void Credits()
     {
         CreditsUI.SetActive(true);
+    }
+
+    public void UpdateScore(float score)
+    {
+        scoreText.text = Mathf.RoundToInt(score).ToString();
+    }
+
+    public void UpdateGameOverScore(float score)
+    {
+        gameOverText.text = $"Score : {Mathf.RoundToInt(score).ToString()}";
+    }
+
+    public void UpdateBestScore(float score)
+    {
+        bestScoreText.text = $"Best Score : {Mathf.RoundToInt(score).ToString()}";
     }
 }

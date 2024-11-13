@@ -18,7 +18,12 @@ public class PlayerMovement1 : MonoBehaviour
     public float decelerationTime;
     public float decelerationMultiplier = 1f;
     public Slider boostSlider;
-
+    public Image boostImage;
+    public float score;
+    public float scoreMultiplier;
+    private float maxBoostTime => maxBoostCharges * boostDecayRate;
+    
+    
     [HideInInspector] public Animator animator;
 
     public Coroutine AccelRoutine;
@@ -71,6 +76,9 @@ public class PlayerMovement1 : MonoBehaviour
         if (clampY)
             transform.position = new Vector3(transform.position.x, 1f, transform.position.z);
 
+        score += scoreMultiplier * Time.deltaTime;
+        UiManager.instance.UpdateScore(score);
+        boostImage.fillAmount = boostTimeRemaining*boostCharges/maxBoostTime;
     }
 
 
@@ -108,7 +116,8 @@ public class PlayerMovement1 : MonoBehaviour
             }
 
             boostTimeRemaining -= Time.deltaTime;
-            boostSlider.value = boostCharges - (1 - (boostTimeRemaining / boostDecayRate));
+            
+          
             if (boostTimeRemaining <= 0)
             {
                 boostCharges--;
@@ -120,6 +129,7 @@ public class PlayerMovement1 : MonoBehaviour
                 }
             }
 
+            
             isAccelerating = true;
         }
         else if ((!Input.GetKey(KeyCode.W) && isAccelerating) || (boostCharges <= 0 && isAccelerating))

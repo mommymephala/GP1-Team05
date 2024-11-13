@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 public class UiManager : MonoBehaviour
@@ -9,8 +10,8 @@ public class UiManager : MonoBehaviour
      
     public static UiManager instance;
     public List<GameObject> modes;
-    // Start is called before the first frame update
-
+    public GameObject SettingsUI;
+    public GameObject CreditsUI;
     private void Awake()
     {
         if (instance != null && instance != this) 
@@ -26,6 +27,8 @@ public class UiManager : MonoBehaviour
     void Start()
     {
         SwitchtoMode(0);
+        SettingsUI.SetActive(false);
+        CreditsUI.SetActive(false);
     }
 
     // Update is called once per frame
@@ -59,5 +62,21 @@ public class UiManager : MonoBehaviour
     public void BacktoMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void Settings()
+    {
+        SettingsUI.SetActive(true);
+    }
+
+    public void Back()
+    {
+        SettingsUI.SetActive(false);
+        CreditsUI.SetActive(false);
+    }
+
+    public void Credits()
+    {
+        CreditsUI.SetActive(true);
     }
 }

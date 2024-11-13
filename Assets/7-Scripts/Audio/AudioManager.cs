@@ -25,7 +25,7 @@ public class AudioManager : MonoBehaviour
     private void Start() 
     {
         PlayMusic("GameplayMusic");
-        AudioManager.Instance.PlaySFX("WindAtmos");
+        PlaySFX("WindAtmos");
     }
 
     public void PlayMusic(string name)

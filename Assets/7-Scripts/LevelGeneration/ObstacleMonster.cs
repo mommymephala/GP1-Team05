@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Obstacle : MonoBehaviour
+public class ObstacleMonster : MonoBehaviour
 {
     public float velocityReduction = 5f;
     public float blinkDuration = 0.5f;
@@ -17,7 +17,7 @@ public class Obstacle : MonoBehaviour
                 playerMovement.StopAcceleration();
                 
                 StartCoroutine(BlinkEffect(other.gameObject));
-                AudioManager.Instance.PlaySFX("Crash1");
+                AudioManager.Instance.Play3DSoundOnObject("MonsterScreech", gameObject);
             }
         }
     }

@@ -6,25 +6,12 @@ using UnityEngine;
 public class LightPickUp : MonoBehaviour
 {
     public int charges;
-    
-    
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
+            AudioManager.Instance.PlaySFX("PickupChime");
             other.GetComponent<PlayerMovement1>().AddBoostCharge(charges);
             other.GetComponent<PlayerMovement1>().score += 500;
             UiManager.instance.UpdateScore(other.GetComponent<PlayerMovement1>().score);

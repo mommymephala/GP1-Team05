@@ -6914,9 +6914,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 2b4778c84e3844041a64167ba658f306, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 0.098
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 0.75
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -14598,6 +14598,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1581944481}
   - component: {fileID: 1581944482}
+  - component: {fileID: 1581944483}
   m_Layer: 0
   m_Name: Music Source
   m_TagString: Untagged
@@ -14632,7 +14633,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 5f5fed799d30a5d4ba0d6ad2ad89acb6, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.009
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -14716,6 +14717,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!165 &1581944483
+AudioHighPassFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1581944480}
+  m_Enabled: 1
+  m_CutoffFrequency: 10
+  m_HighpassResonanceQ: 1
 --- !u!1001 &1583212796
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16249,8 +16260,6 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 7d868ad435471c248bf1509f17162394, type: 3}
   - name: Crash2
     clip: {fileID: 8300000, guid: 0472fd6090dfad74296aad76fd11f378, type: 3}
-  - name: WindAtmos
-    clip: {fileID: 8300000, guid: 2b4778c84e3844041a64167ba658f306, type: 3}
   - name: Jump
     clip: {fileID: 8300000, guid: c1aa279788912e742baf0b97eadc85ce, type: 3}
   - name: SideDash

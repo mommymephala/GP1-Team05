@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 4578727776566512360}
   - component: {fileID: 2592873980182681827}
   - component: {fileID: 5801569325282697506}
-  - component: {fileID: 2865509060396364988}
   - component: {fileID: 2802677449368244495}
+  - component: {fileID: -3713149502844435287}
   m_Layer: 0
   m_Name: Medium Rock
   m_TagString: Untagged
@@ -85,21 +85,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &2865509060396364988
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2705095635566871836}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0eb65f0fabf94444c872a001723acf5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocityReduction: 10
-  blinkDuration: 0.5
-  blinkCount: 3
 --- !u!135 &2802677449368244495
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -121,3 +106,18 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.05400015
   m_Center: {x: 0.0015363209, y: 0.0018486973, z: 0.0041944506}
+--- !u!114 &-3713149502844435287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2705095635566871836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0555664b274b9b4468b38ec74f559c4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocityReduction: 10
+  blinkDuration: 0.5
+  blinkCount: 3

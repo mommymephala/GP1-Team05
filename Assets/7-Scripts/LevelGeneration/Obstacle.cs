@@ -14,7 +14,7 @@ public class Obstacle : MonoBehaviour
             if (other.TryGetComponent<PlayerMovement1>(out var playerMovement))
             {
                 playerMovement.currentVelocity = Mathf.Max(playerMovement.minVelocity, playerMovement.currentVelocity - velocityReduction);
-
+                
                 
                 StartCoroutine(BlinkEffect(other.gameObject));
                 AudioManager.Instance.Play3DSoundOnObject("Monster1", gameObject);

@@ -3,12 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LightPickUp : MonoBehaviour
+public class PlatformObstacle : MonoBehaviour
 {
-    public int charges;
-    
-    
-    
+    public Collider platformCollider;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,11 +24,10 @@ public class LightPickUp : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<PlayerMovement1>().AddBoostCharge(charges);
-            other.GetComponent<PlayerMovement1>().score += 500;
-            UiManager.instance.UpdateScore(other.GetComponent<PlayerMovement1>().score);
-            Destroy(gameObject);
-        }
+            platformCollider.isTrigger = true;
         
+        }
     }
+
+
 }

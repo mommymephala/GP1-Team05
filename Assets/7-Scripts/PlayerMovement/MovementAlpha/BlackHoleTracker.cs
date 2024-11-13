@@ -13,7 +13,10 @@ public class BlackHoleTracker : MonoBehaviour
     public float vignetteMaxIntensity = 1.0f;
     public CinemachineVirtualCamera deathCamera;
     public float deathDelay = 2f;
-
+    private Rigidbody rb;
+    
+    
+    
     // Vignette and Chromatic Aberration
     private Volume globalVolume;
     private Vignette vignette;
@@ -32,7 +35,9 @@ public class BlackHoleTracker : MonoBehaviour
     {
         globalVolume = FindObjectOfType<Volume>();
         playerMovement = player.GetComponent<PlayerMovement1>();
-
+        rb = GetComponent<Rigidbody>();
+        
+        
         if (globalVolume == null)
         {
             Debug.LogError("Global Volume not found");
@@ -72,7 +77,10 @@ public class BlackHoleTracker : MonoBehaviour
     private void Update()
     {
         if (isConsumingPlayer || vignette == null || chromaticAberration == null) return;
-
+        rb.velocity = new Vector3(0,0,followSpeed);
+        if(Vector3.Distance(gameObject.transform.position, player.position)<maxDistance)
+            gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, player.position.z-maxDistance);
+        
         float playerSpeed = playerMovement.currentVelocity;
 
         if (playerSpeed <= speedThreshold)

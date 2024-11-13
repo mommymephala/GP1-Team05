@@ -21,6 +21,8 @@ public class PlayerMovement1 : MonoBehaviour
     public GameObject groundObj;
     public float minEmission;
     public float maxEmission;
+    public float score;
+    public float scorePerSecond;
     
     private Material material;
     
@@ -74,8 +76,8 @@ public class PlayerMovement1 : MonoBehaviour
         HandleJump();
         if(Input.GetKeyDown(KeyCode.Escape))
             UiManager.instance.SwitchtoMode(2);
-      
-        
+        score+= scorePerSecond*Time.deltaTime;
+        UiManager.instance.UpdateScore(score);
     }
 
 

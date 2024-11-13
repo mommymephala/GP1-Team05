@@ -7,6 +7,8 @@ public class LightPickUp : MonoBehaviour
 {
     public int charges;
     
+    
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +26,8 @@ public class LightPickUp : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             other.GetComponent<PlayerMovement1>().AddBoostCharge(charges);
+            other.GetComponent<PlayerMovement1>().score += 500;
+            UiManager.instance.UpdateScore(other.GetComponent<PlayerMovement1>().score);
             Destroy(gameObject);
         }
         

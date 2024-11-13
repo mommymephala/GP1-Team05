@@ -16,17 +16,17 @@ public class PlayerMovement1 : MonoBehaviour
     public AnimationCurve decelerationCurve;
     public float accelerationTime;
     public float decelerationTime;
-    public float decelerationMultiplier=1f;
+    public float decelerationMultiplier = 1f;
     public Slider boostSlider;
-    
-    [HideInInspector]public Animator animator;
-    
+
+    [HideInInspector] public Animator animator;
+
     public Coroutine AccelRoutine;
     public Coroutine DecelRoutine;
 
     public float previousAcceleration = 0f;
     public float previousDeceleration = 0f;
-    
+
     public float currentVelocity;
     private bool isGrounded = true;
     private bool canDash = true; // Can dash or not
@@ -42,8 +42,8 @@ public class PlayerMovement1 : MonoBehaviour
     private int maxBoostCharges = 10; // Max boost charges
     private float boostDecayRate = 1f;
     private bool clampY;
-    
-    
+
+
     private void Start()
     {
         currentMultiplier = 1f;
@@ -56,9 +56,9 @@ public class PlayerMovement1 : MonoBehaviour
         currentVelocity = defaultVelocity;
 
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY;
-        
+
         boostSlider.maxValue = maxBoostCharges;
-        
+
 
     }
 
@@ -66,9 +66,9 @@ public class PlayerMovement1 : MonoBehaviour
     {
         HandleMovement();
         HandleJump();
-        if(Input.GetKeyDown(KeyCode.Escape))
-            UiManager.instance.SwitchtoMode(2);
-        if(clampY)
+        //if(Input.GetKeyDown(KeyCode.Escape))
+        //    UiManager.instance.SwitchtoMode(2); Now this in UIManager.cs
+        if (clampY)
             transform.position = new Vector3(transform.position.x, 1f, transform.position.z);
 
     }
@@ -77,21 +77,24 @@ public class PlayerMovement1 : MonoBehaviour
     private void HandleMovement()
     {
         float moveHorizontal = Input.GetAxis("Horizontal");
-        moveHorizontal = moveHorizontal * 0.5f;
+
+        float horizontalSpeedModifier = Mathf.Clamp(1 - (currentVelocity / maxVelocity), 0.3f, 1f);
+        moveHorizontal *= horizontalSpeedModifier;
+
         Vector3 movement = new Vector3(moveHorizontal, 0, 1) * currentVelocity;
-        
+
         animator?.SetInteger("Direction", 0);
-        if(Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A))
             animator?.SetInteger("Direction", 1);
-        else if(Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(KeyCode.D))
             animator?.SetInteger("Direction", 2);
-        
-        
-            
-        
+
+
+
+
         rb.velocity = new Vector3(movement.x, rb.velocity.y, movement.z);
 
-        if (Input.GetKey(KeyCode.W)  && boostCharges > 0)
+        if (Input.GetKey(KeyCode.W) && boostCharges > 0)
         {
 
             if (!isAccelerating)
@@ -103,7 +106,7 @@ public class PlayerMovement1 : MonoBehaviour
                 }
                 AccelRoutine = StartCoroutine(MovementCurve());
             }
-            
+
             boostTimeRemaining -= Time.deltaTime;
             boostSlider.value = boostCharges - (1 - (boostTimeRemaining / boostDecayRate));
             if (boostTimeRemaining <= 0)
@@ -116,10 +119,10 @@ public class PlayerMovement1 : MonoBehaviour
                     boostSlider.value = boostCharges;
                 }
             }
-            
+
             isAccelerating = true;
         }
-        else if ((!Input.GetKey(KeyCode.W) && isAccelerating)|| (boostCharges <= 0 && isAccelerating))
+        else if ((!Input.GetKey(KeyCode.W) && isAccelerating) || (boostCharges <= 0 && isAccelerating))
         {
             if (AccelRoutine != null)
             {
@@ -128,15 +131,15 @@ public class PlayerMovement1 : MonoBehaviour
             DecelRoutine = StartCoroutine(DecelerationCurve());
             isAccelerating = false;
         }
-        
-        
-        
+
+
+
 
         if (Input.GetKey(KeyCode.S))
             currentMultiplier = decelerationMultiplier;
         else
             currentMultiplier = 1f;
-        
+
 
         //Debug.Log("Current Velocity: " + currentVelocity);
 
@@ -146,16 +149,16 @@ public class PlayerMovement1 : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.A))
             {
                 StartCoroutine(Dash(Vector3.left));
-                
+
             }
             else if (Input.GetKeyDown(KeyCode.D))
             {
                 StartCoroutine(Dash(Vector3.right));
-                
+
             }
         }
     }
-    
+
 
     private IEnumerator Dash(Vector3 direction)
     {
@@ -179,6 +182,12 @@ public class PlayerMovement1 : MonoBehaviour
             jumpCount++;
             isGrounded = false;
         }
+
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            StopCoroutine(SmoothJump());
+            rb.velocity = new Vector3(rb.velocity.x, Mathf.Min(rb.velocity.y, 0), rb.velocity.z); // Ограничиваем вертикальную скорость
+        }
     }
 
     private IEnumerator SmoothJump()
@@ -186,14 +195,14 @@ public class PlayerMovement1 : MonoBehaviour
         float jumpTime = 0f;
 
         // Increase upward force for smooth jump
-        while (jumpTime < jumpDuration)
+        while (jumpTime < jumpDuration && Input.GetKey(KeyCode.Space))
         {
             rb.velocity = new Vector3(rb.velocity.x, jumpForce * (1 - (jumpTime / jumpDuration)), rb.velocity.z);
             jumpTime += Time.deltaTime;
             animator?.SetBool("IsJumping", true);
             yield return null;
         }
-        
+
         rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
     }
 
@@ -213,11 +222,11 @@ public class PlayerMovement1 : MonoBehaviour
         float time = 0f;
         float t;
         isRampingUp = true;
-        if(previousDeceleration != 0f)
-            time = accelerationTime-accelerationCurve.Evaluate(previousDeceleration)*accelerationTime;
-       
-        
-        while (time<=accelerationTime)
+        if (previousDeceleration != 0f)
+            time = accelerationTime - accelerationCurve.Evaluate(previousDeceleration) * accelerationTime;
+
+
+        while (time <= accelerationTime)
         {
 
             time += Time.deltaTime;
@@ -226,9 +235,9 @@ public class PlayerMovement1 : MonoBehaviour
             currentVelocity = Mathf.Lerp(defaultVelocity, maxVelocity, accelerationCurve.Evaluate(t));
             yield return null;
         }
-        
+
         previousAcceleration = 0f;
-        
+
         isRampingUp = false;
     }
 
@@ -238,26 +247,26 @@ public class PlayerMovement1 : MonoBehaviour
         float time = 0f;
         float t;
         isDecelerating = true;
-        if(previousAcceleration != 0f)
-            time = decelerationTime-decelerationCurve.Evaluate(previousAcceleration)*decelerationTime;
-        
-        
-        
-        while (time<=decelerationTime)
+        if (previousAcceleration != 0f)
+            time = decelerationTime - decelerationCurve.Evaluate(previousAcceleration) * decelerationTime;
+
+
+
+        while (time <= decelerationTime)
         {
-            time += Time.deltaTime*currentMultiplier;
+            time += Time.deltaTime * currentMultiplier;
             t = time / decelerationTime;
             previousDeceleration = t;
             currentVelocity = Mathf.Lerp(maxVelocity, defaultVelocity, decelerationCurve.Evaluate(t));
             yield return null;
         }
-        
+
         isRampingUp = false;
         t = 0;
         previousDeceleration = 0f;
         isDecelerating = false;
     }
-    
+
     public void AddBoostCharge(int charge)
     {
         if (boostCharges < maxBoostCharges)
@@ -271,7 +280,7 @@ public class PlayerMovement1 : MonoBehaviour
             }
         }
     }
-    
-    
-    
+
+
+
 }

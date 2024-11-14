@@ -94,10 +94,10 @@ public class AudioManager : MonoBehaviour
 
     public void SetVolume()
     {
-        foreach (var source in GetComponentsInChildren<AudioSource>())
-        {
-            if(PlayerPrefs.HasKey("Volume"))
-                source.volume = PlayerPrefs.GetFloat("Volume");            
-        }
+        if(PlayerPrefs.HasKey("Volume"))
+            GetComponentInChildren<AudioSource>().volume = PlayerPrefs.GetFloat("Volume");
+        
+        
+        
     }
 }

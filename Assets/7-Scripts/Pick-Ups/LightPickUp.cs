@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class LightPickUp : MonoBehaviour
@@ -28,6 +29,7 @@ public class LightPickUp : MonoBehaviour
             other.GetComponent<PlayerMovement1>().AddBoostCharge(charges);
             other.GetComponent<PlayerMovement1>().score += 500;
             UiManager.instance.UpdateScore(other.GetComponent<PlayerMovement1>().score);
+            AudioManager.Instance.PlaySFX("PickupChime");
             Destroy(gameObject);
         }
         

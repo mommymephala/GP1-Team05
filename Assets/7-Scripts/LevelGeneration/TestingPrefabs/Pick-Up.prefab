@@ -155,6 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   charges: 1
+  particle: {fileID: 3969019232749981422, guid: 99bc825712c1f6c41afce07e2687e499, type: 3}
 --- !u!135 &2036664287640649563
 SphereCollider:
   m_ObjectHideFlags: 0

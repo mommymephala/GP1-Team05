@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UiManager : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class UiManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI gameOverText;
     public TextMeshProUGUI bestScoreText;
+    public Image volumeImage;
+    
     
     private void Awake()
     {
@@ -32,8 +35,11 @@ public class UiManager : MonoBehaviour
     void Start()
     {
         SwitchtoMode(0);
-        //SettingsUI.SetActive(false);
-        //CreditsUI.SetActive(false);
+
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+            AudioManager.Instance.PlayMusic("MainMenuMusic");
+        
+        
     }
 
     // Update is called once per frame
@@ -99,4 +105,12 @@ public class UiManager : MonoBehaviour
     {
         bestScoreText.text = $"Best Score : {Mathf.RoundToInt(score).ToString()}";
     }
+
+    public void SetVolume()
+    {
+        PlayerPrefs.SetFloat("Volume", volumeImage.fillAmount);
+        PlayerPrefs.Save();
+        AudioManager.Instance.SetVolume();
+    }
+    
 }

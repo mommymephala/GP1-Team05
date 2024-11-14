@@ -8,6 +8,7 @@ public class AudioManager : MonoBehaviour
     public static AudioManager Instance;
     public Sound[] musicSounds, sfxSounds;
     public AudioSource musicSource, sfxSource;
+    private AudioHighPassFilter musicHighPassFilter;
 
     private void Awake()
     {
@@ -20,12 +21,17 @@ public class AudioManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        musicHighPassFilter = musicSource.GetComponent<AudioHighPassFilter>();
     }
 
     private void Start() 
     {
-        PlayMusic("GameplayMusic");
-        AudioManager.Instance.PlaySFX("WindAtmos");
+        // PlayMusic("GameplayMusic");
+        // PlaySFX("WindAtmos");
+
+        SetVolume();
+        
     }
 
     public void PlayMusic(string name)
@@ -75,6 +81,23 @@ public class AudioManager : MonoBehaviour
         else
         {
             Debug.LogWarning("AudioSource not found on target object: " + targetObject.name);
+        }
+    }
+
+    public void SetHighPassCutoff(float cutoff)
+    {
+        if (musicHighPassFilter != null)
+        {
+            musicHighPassFilter.cutoffFrequency = Mathf.Clamp(cutoff, 10f, 5000f); // Clamps to a safe range
+        }
+    }
+
+    public void SetVolume()
+    {
+        foreach (var source in GetComponentsInChildren<AudioSource>())
+        {
+            if(PlayerPrefs.HasKey("Volume"))
+                source.volume = PlayerPrefs.GetFloat("Volume");            
         }
     }
 }

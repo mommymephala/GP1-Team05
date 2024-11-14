@@ -2480,6 +2480,7 @@ MonoBehaviour:
   velocityReduction: 5
   blinkDuration: 0.5
   blinkCount: 3
+  hitParticle: {fileID: 4629069355029994534, guid: a1b58c40a6a74894986820d2ba33b2d1, type: 3}
 --- !u!1 &8190945180762240944
 GameObject:
   m_ObjectHideFlags: 0

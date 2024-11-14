@@ -32,13 +32,13 @@ public class ButtonAnimation : MonoBehaviour,IPointerEnterHandler, IPointerExitH
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        transform.DOScale(targetScale, animationTime).SetEase(easeIn);
+        transform.DOScale(targetScale, animationTime).SetEase(easeIn).SetUpdate(true);
         print("OnPointerEnter");
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        transform.DOScale(originalScale, animationTime).SetEase(easeOut);
+        transform.DOScale(originalScale, animationTime).SetEase(easeOut).SetUpdate(true);
         print("OnPointerExit");
     }
 }

@@ -77,11 +77,17 @@ public class BlackHoleTracker : MonoBehaviour
     private void Update()
     {
         if (isConsumingPlayer || vignette == null || chromaticAberration == null) return;
-        rb.velocity = new Vector3(0,0,followSpeed);
-        if(Vector3.Distance(gameObject.transform.position, player.position)<maxDistance)
-            gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, player.position.z-maxDistance);
-        
+
+        rb.velocity = new Vector3(0, 0, followSpeed);
+        if (Vector3.Distance(transform.position, player.position) < maxDistance)
+            transform.position = new Vector3(transform.position.x, transform.position.y, player.position.z - maxDistance);
+
         float playerSpeed = playerMovement.currentVelocity;
+
+        // Calculate high-pass filter cutoff based on vignette timer
+        float normalizedVignetteIntensity = vignetteTimer / vignetteDarkenDuration;
+        float highPassCutoff = Mathf.Lerp(10f, 1000f, normalizedVignetteIntensity); // Ramps up to 1000 Hz as vignette intensifies
+        AudioManager.Instance.SetHighPassCutoff(highPassCutoff);
 
         if (playerSpeed <= speedThreshold)
         {
@@ -92,16 +98,7 @@ public class BlackHoleTracker : MonoBehaviour
             vignette.intensity.value = vignetteIntensity;
 
             // Adjust chromatic aberration intensity
-           float chromaticIntensity = Mathf.Lerp(0, 1f, vignetteTimer / vignetteDarkenDuration);
-           // chromaticAberration.intensity.value = chromaticIntensity;
-
-            // Camera shake as player approaches death
-   /*         if (noise != null && vignetteTimer >= vignetteDarkenDuration * 0.75f)
-            {
-                // Only start shaking when vignette is 75% towards max
-                float shakeIntensity = Mathf.Lerp(0, maxShakeIntensity, (vignetteTimer - vignetteDarkenDuration * 0.75f) / (vignetteDarkenDuration * 0.25f));
-                noise.m_AmplitudeGain = shakeIntensity;
-            }*/
+            float chromaticIntensity = Mathf.Lerp(0, 1f, vignetteTimer / vignetteDarkenDuration);
 
             // Trigger death camera effect if fully darkened
             if (vignetteTimer >= vignetteDarkenDuration)
@@ -116,13 +113,6 @@ public class BlackHoleTracker : MonoBehaviour
             vignetteTimer = Mathf.Clamp(vignetteTimer, 0, vignetteDarkenDuration);
 
             vignette.intensity.value = Mathf.Lerp(0, vignetteMaxIntensity, vignetteTimer / vignetteDarkenDuration);
-           // chromaticAberration.intensity.value = Mathf.Lerp(0, 1f, vignetteTimer / vignetteDarkenDuration);
-
-            // Reset camera shake when not close to death
-/*            if (noise != null)
-            {
-                noise.m_AmplitudeGain = 0;
-            }*/
         }
     }
 

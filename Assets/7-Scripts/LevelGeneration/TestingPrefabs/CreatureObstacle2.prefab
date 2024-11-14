@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4357078395276960473}
   - component: {fileID: 4973699559565300692}
+  - component: {fileID: 7324643261335330801}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
@@ -47,12 +48,28 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 3.2595062
   m_Center: {x: 0, y: 0, z: 0.31500816}
+--- !u!114 &7324643261335330801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7733513309708784219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0eb65f0fabf94444c872a001723acf5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocityReduction: 5
+  blinkDuration: 0.5
+  blinkCount: 3
+  hitParticle: {fileID: 4629069355029994534, guid: a1b58c40a6a74894986820d2ba33b2d1, type: 3}
 --- !u!1001 &5477832648689769846
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -119,7 +136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6051363198701535630, guid: ae7fd08d8f2d0eb4b97518d7cd90ce03, type: 3}
       propertyPath: m_Name
-      value: BigAlien_Final Variant
+      value: CreatureObstacle2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

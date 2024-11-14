@@ -1,7 +1,6 @@
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
-using TreeEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
@@ -77,7 +76,7 @@ public class CameraZoom1 : MonoBehaviour
             }
             else
             {
-                Debug.Log("Tal");
+                //Debug.Log("Tal");
                 perlin.m_AmplitudeGain = Mathf.Lerp(perlin.m_AmplitudeGain, 0f, Time.deltaTime * 5);
                 perlin.m_FrequencyGain = Mathf.Lerp(perlin.m_FrequencyGain, 0f, Time.deltaTime * 5);
                 chromaticAberration.intensity.value = Mathf.Lerp(chromaticAberration.intensity.value, 0f, Time.deltaTime * 2);

@@ -22,6 +22,8 @@ public class PlayerMovement1 : MonoBehaviour
     public float score;
     public float scoreMultiplier;
     private float maxBoostTime => maxBoostCharges * boostDecayRate;
+
+    public bool isPaused;
     
     
     [HideInInspector] public Animator animator;
@@ -44,10 +46,10 @@ public class PlayerMovement1 : MonoBehaviour
     private float currentMultiplier;
     private int boostCharges;
     private float boostTimeRemaining = 0f; // Remaining time for boost decay
-    private int maxBoostCharges = 10; // Max boost charges
-    private float boostDecayRate = 1f;
-    
-
+    private int maxBoostCharges = 5; // Max boost charges
+    private float boostDecayRate = 2f;
+    public GameObject hitParticle;
+    public GameObject pickUpParticle;
 
     private void Start()
     {
@@ -62,8 +64,9 @@ public class PlayerMovement1 : MonoBehaviour
 
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY;
 
-        boostSlider.maxValue = maxBoostCharges;
-
+        //boostSlider.maxValue = maxBoostCharges;
+        AudioManager.Instance.PlayMusic("GameplayMusic");
+        AudioManager.Instance.PlaySFX("WindAtmos");
 
     }
 
@@ -71,10 +74,8 @@ public class PlayerMovement1 : MonoBehaviour
     {
         HandleMovement();
         HandleJump();
-        //if(Input.GetKeyDown(KeyCode.Escape))
-        //    UiManager.instance.SwitchtoMode(2); Now this in UIManager.cs
- 
-
+        HandlePause();
+        
         score += scoreMultiplier * Time.deltaTime;
         UiManager.instance.UpdateScore(score);
         boostImage.fillAmount = boostDecayRate*boostCharges/maxBoostTime;
@@ -287,6 +288,9 @@ public class PlayerMovement1 : MonoBehaviour
                 boostSlider.value = boostCharges;
             }
         }
+        var instance = Instantiate(pickUpParticle, transform);
+        instance.GetComponent<ParticleSystem>().Play();
+        Destroy(instance, 3f);
     }
 
     public void StopAcceleration()
@@ -299,5 +303,30 @@ public class PlayerMovement1 : MonoBehaviour
             
     }
 
+    public void HandlePause()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (isPaused)
+            {
+                UiManager.instance.SwitchtoMode(2);
+                Time.timeScale = 0;
+            }
+            else
+            {
+                UiManager.instance.SwitchtoMode(0);
+                Time.timeScale = 1;
+            }
+            isPaused = !isPaused;
+        }
+    }
+
+    public void GetHit()
+    {
+        var instance = Instantiate(hitParticle, transform);
+        instance.GetComponent<ParticleSystem>().Play();
+        Destroy(instance,3f);
+        print("Hit");
+    }
 
 }

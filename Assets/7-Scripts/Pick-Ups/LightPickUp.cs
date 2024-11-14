@@ -6,7 +6,7 @@ using UnityEngine;
 public class LightPickUp : MonoBehaviour
 {
     public int charges;
-    
+    public GameObject particle;
     
     
     // Start is called before the first frame update

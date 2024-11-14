@@ -48,6 +48,6 @@ MonoBehaviour:
   waveRows: 5
   waveColumns: 2
   spacing: 20
-  possiblePoints: f4fffffff6fffffff8fffffffafffffffcfffffffeffffff00000000020000000400000006000000080000000a0000000c000000
+  possiblePoints: f4fffffff8fffffffcffffff0000000004000000080000000c000000
   obstacleSpeed: 20
   maxObstacleAmount: 8

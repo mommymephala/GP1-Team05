@@ -32,8 +32,8 @@ public class UiManager : MonoBehaviour
     void Start()
     {
         SwitchtoMode(0);
-        SettingsUI.SetActive(false);
-        CreditsUI.SetActive(false);
+        //SettingsUI.SetActive(false);
+        //CreditsUI.SetActive(false);
     }
 
     // Update is called once per frame

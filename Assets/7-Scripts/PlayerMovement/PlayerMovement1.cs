@@ -46,8 +46,8 @@ public class PlayerMovement1 : MonoBehaviour
     private float currentMultiplier;
     private int boostCharges;
     private float boostTimeRemaining = 0f; // Remaining time for boost decay
-    private int maxBoostCharges = 5; // Max boost charges
-    private float boostDecayRate = 2f;
+    private int maxBoostCharges = 10; // Max boost charges
+    private float boostDecayRate = 1f;
     public GameObject hitParticle;
     public GameObject pickUpParticle;
 
@@ -291,6 +291,13 @@ public class PlayerMovement1 : MonoBehaviour
         var instance = Instantiate(pickUpParticle, transform);
         instance.GetComponent<ParticleSystem>().Play();
         Destroy(instance, 3f);
+    }
+
+    public void LooseBoost(int charge)
+    {
+        boostCharges -= charge;
+        boostCharges = Mathf.Clamp(boostCharges, 0, maxBoostCharges);
+        boostImage.fillAmount = boostDecayRate*boostCharges/maxBoostTime;
     }
 
     public void StopAcceleration()

@@ -66,7 +66,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eb65f0fabf94444c872a001723acf5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocityReduction: 5
+  velocityReduction: 40
+  chargeMalus: 2
   blinkDuration: 0.5
   blinkCount: 3
   hitParticle: {fileID: 4629069355029994534, guid: a1b58c40a6a74894986820d2ba33b2d1, type: 3}

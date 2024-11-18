@@ -96,7 +96,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 028d8496533afc04cbe84e9d1b38c4c5, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -596,7 +596,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2120524127}
-  followSpeed: 11
+  followSpeed: 14
   maxDistance: 20
   vignetteStartDistance: 10
   vignetteMaxIntensity: 1
@@ -18728,7 +18728,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   accelerationTime: 6
-  decelerationTime: 7
+  decelerationTime: 4
   decelerationMultiplier: 2
   boostSlider: {fileID: 0}
   boostImage: {fileID: 1201597682}

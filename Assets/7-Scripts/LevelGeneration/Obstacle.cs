@@ -4,6 +4,7 @@ using UnityEngine;
 public class Obstacle : MonoBehaviour
 {
     public float velocityReduction = 5f;
+    public int chargeMalus;
     public float blinkDuration = 0.5f;
     public int blinkCount = 3;
     public GameObject hitParticle;
@@ -17,7 +18,7 @@ public class Obstacle : MonoBehaviour
                 playerMovement.GetHit();
                 playerMovement.currentVelocity = Mathf.Max(playerMovement.defaultVelocity, playerMovement.currentVelocity - velocityReduction);
                 playerMovement.StopAcceleration();
-                
+                playerMovement.LooseBoost(chargeMalus);
                 StartCoroutine(BlinkEffect(other.gameObject));
                 AudioManager.Instance.Play3DSoundOnObject("Monster1", gameObject);
             }

@@ -139,6 +139,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: CreatureObstacle2
       objectReference: {fileID: 0}
+    - target: {fileID: 7625778777200794744, guid: ae7fd08d8f2d0eb4b97518d7cd90ce03, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 7625778777200794744, guid: ae7fd08d8f2d0eb4b97518d7cd90ce03, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 7625778777200794744, guid: ae7fd08d8f2d0eb4b97518d7cd90ce03, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 7625778777200794744, guid: ae7fd08d8f2d0eb4b97518d7cd90ce03, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

@@ -14,7 +14,7 @@ public class BlackHoleTracker : MonoBehaviour
     public CinemachineVirtualCamera deathCamera;
     public float deathDelay = 2f;
     private Rigidbody rb;
-    
+    public Material fullScreenMaterial;
     
     
     // Vignette and Chromatic Aberration
@@ -26,7 +26,9 @@ public class BlackHoleTracker : MonoBehaviour
     private PlayerMovement1 playerMovement;
     public float vignetteDarkenDuration = 8f;
     public float speedThreshold = 10f;
-
+    
+    
+    
     // Camera Shake
     private CinemachineBasicMultiChannelPerlin noise;
     public float maxShakeIntensity = 1f; // Maximum shake intensity near death
@@ -95,8 +97,10 @@ public class BlackHoleTracker : MonoBehaviour
 
             // Adjust vignette intensity
             float vignetteIntensity = Mathf.Lerp(0, vignetteMaxIntensity, vignetteTimer / vignetteDarkenDuration);
+           
             vignette.intensity.value = vignetteIntensity;
-
+           
+            
             // Adjust chromatic aberration intensity
             float chromaticIntensity = Mathf.Lerp(0, 1f, vignetteTimer / vignetteDarkenDuration);
 

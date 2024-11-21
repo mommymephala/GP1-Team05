@@ -47,7 +47,7 @@ public class PlayerMovement1 : MonoBehaviour
     private int boostCharges;
     private float boostTimeRemaining = 0f; // Remaining time for boost decay
     private int maxBoostCharges = 10; // Max boost charges
-    private float boostDecayRate = 1f;
+    private float boostDecayRate = 1.3f;
     public GameObject hitParticle;
     public GameObject pickUpParticle;
 
@@ -67,7 +67,7 @@ public class PlayerMovement1 : MonoBehaviour
         //boostSlider.maxValue = maxBoostCharges;
         AudioManager.Instance.PlayMusic("GameplayMusic");
         AudioManager.Instance.PlaySFX("WindAtmos");
-        boostCharges = 4;
+        boostCharges = 2;
     }
 
     private void Update()
@@ -240,8 +240,6 @@ public class PlayerMovement1 : MonoBehaviour
 
             time += Time.deltaTime;
             t = time / accelerationTime;
-            if(t>= 0.5f)
-                animator?.SetBool("IsDashing", true);
             previousAcceleration = t;
             currentVelocity = Mathf.Lerp(defaultVelocity, maxVelocity, accelerationCurve.Evaluate(t));
             yield return null;
@@ -260,8 +258,6 @@ public class PlayerMovement1 : MonoBehaviour
         isDecelerating = true;
         if (previousAcceleration != 0f)
             time = decelerationTime - decelerationCurve.Evaluate(previousAcceleration) * decelerationTime;
-
-        animator?.SetBool("IsDashing", false);
 
         while (time <= decelerationTime)
         {

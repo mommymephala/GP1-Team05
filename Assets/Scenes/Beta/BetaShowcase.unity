@@ -605,8 +605,10 @@ MonoBehaviour:
   vignetteMaxIntensity: 1
   deathCamera: {fileID: 803790837}
   deathDelay: 2
-  vignetteDarkenDuration: 8
+  fullScreenMaterial: {fileID: 2100000, guid: 909611247664ae544bcae77612596454, type: 2}
+  vignetteDarkenDuration: 6
   speedThreshold: 10
+  _fullScreenShader: {fileID: -4322733084300711169, guid: c40be3174f62c4acf8c1216858c64956, type: 2}
   maxShakeIntensity: 1
 --- !u!65 &89330152
 BoxCollider:
@@ -18774,7 +18776,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  accelerationTime: 6
+  accelerationTime: 7
   decelerationTime: 4
   decelerationMultiplier: 2
   boostSlider: {fileID: 0}

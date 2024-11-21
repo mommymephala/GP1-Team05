@@ -4688,9 +4688,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Jonny Moore
-
-'
+  m_text: Jonathan Moore
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a48f0dffcb2c48140b5972660931b7ec, type: 2}
   m_sharedMaterial: {fileID: 5168597403339273286, guid: a48f0dffcb2c48140b5972660931b7ec, type: 2}

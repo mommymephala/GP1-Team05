@@ -599,7 +599,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2120524127}
-  followSpeed: 14
+  followSpeed: 20
   maxDistance: 20
   vignetteStartDistance: 10
   vignetteMaxIntensity: 1
@@ -7782,6 +7782,7 @@ MonoBehaviour:
   gameOverText: {fileID: 848214307}
   bestScoreText: {fileID: 935742411}
   volumeImage: {fileID: 0}
+  volumeSlider: {fileID: 0}
 --- !u!4 &659394876
 Transform:
   m_ObjectHideFlags: 0
@@ -9204,7 +9205,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 74.171936, y: 100.899994}
+  m_AnchoredPosition: {x: 77.4, y: 136}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1123436007
@@ -9227,7 +9228,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Speed Up
+  m_text: 'Speed Up
+
+    (Hold)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a48f0dffcb2c48140b5972660931b7ec, type: 2}
   m_sharedMaterial: {fileID: 5168597403339273286, guid: a48f0dffcb2c48140b5972660931b7ec, type: 2}
@@ -16121,7 +16124,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1545874334
 MonoBehaviour:
   m_ObjectHideFlags: 0

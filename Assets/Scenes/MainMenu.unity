@@ -1836,6 +1836,7 @@ MonoBehaviour:
   gameOverText: {fileID: 0}
   bestScoreText: {fileID: 0}
   volumeImage: {fileID: 75616179}
+  volumeSlider: {fileID: 460370149}
 --- !u!1 &579572172
 GameObject:
   m_ObjectHideFlags: 0
@@ -5488,18 +5489,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 546258119}
-        m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
-        m_MethodName: SetVolume
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1520020295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5562,6 +5551,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3936597583200288975, guid: 116c20eb97395c84198787480610f5c8, type: 3}
+      propertyPath: m_Volume
+      value: 0.03
+      objectReference: {fileID: 0}
     - target: {fileID: 5332308859800523415, guid: 116c20eb97395c84198787480610f5c8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

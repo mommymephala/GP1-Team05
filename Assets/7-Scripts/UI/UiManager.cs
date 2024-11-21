@@ -18,7 +18,7 @@ public class UiManager : MonoBehaviour
     public TextMeshProUGUI gameOverText;
     public TextMeshProUGUI bestScoreText;
     public Image volumeImage;
-    
+    public Slider volumeSlider;
     
     private void Awake()
     {
@@ -39,6 +39,11 @@ public class UiManager : MonoBehaviour
         if (SceneManager.GetActiveScene().buildIndex == 1)
             AudioManager.Instance.PlayMusic("MainMenuMusic");
         
+        
+        if(PlayerPrefs.HasKey("Volume"))
+            volumeSlider.value = PlayerPrefs.GetFloat("Volume");
+        
+        volumeSlider.onValueChanged.AddListener(SetVolume);
         
     }
 
@@ -106,9 +111,9 @@ public class UiManager : MonoBehaviour
         bestScoreText.text = $"Best Score : {Mathf.RoundToInt(score).ToString()}";
     }
 
-    public void SetVolume()
+    public void SetVolume(float volume)
     {
-        PlayerPrefs.SetFloat("Volume", volumeImage.fillAmount);
+        PlayerPrefs.SetFloat("Volume", volume);
         PlayerPrefs.Save();
         AudioManager.Instance.SetVolume();
     }

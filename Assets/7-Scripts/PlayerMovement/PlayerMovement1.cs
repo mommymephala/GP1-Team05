@@ -67,7 +67,7 @@ public class PlayerMovement1 : MonoBehaviour
         //boostSlider.maxValue = maxBoostCharges;
         AudioManager.Instance.PlayMusic("GameplayMusic");
         AudioManager.Instance.PlaySFX("WindAtmos");
-
+        boostCharges = 4;
     }
 
     private void Update()
@@ -240,6 +240,8 @@ public class PlayerMovement1 : MonoBehaviour
 
             time += Time.deltaTime;
             t = time / accelerationTime;
+            if(t>= 0.5f)
+                animator?.SetBool("IsDashing", true);
             previousAcceleration = t;
             currentVelocity = Mathf.Lerp(defaultVelocity, maxVelocity, accelerationCurve.Evaluate(t));
             yield return null;
@@ -259,7 +261,7 @@ public class PlayerMovement1 : MonoBehaviour
         if (previousAcceleration != 0f)
             time = decelerationTime - decelerationCurve.Evaluate(previousAcceleration) * decelerationTime;
 
-
+        animator?.SetBool("IsDashing", false);
 
         while (time <= decelerationTime)
         {
@@ -332,6 +334,7 @@ public class PlayerMovement1 : MonoBehaviour
     {
         var instance = Instantiate(hitParticle, transform);
         instance.GetComponent<ParticleSystem>().Play();
+        animator?.SetBool("IsDashing", false);
         Destroy(instance,3f);
         print("Hit");
     }

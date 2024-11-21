@@ -70,7 +70,7 @@ MonoBehaviour:
   randomizeStaticObjectCount: 0
   allowPickUp: 1
   pickUpPrefab: {fileID: 3179428024956004301, guid: 62baced86f6d21a43bea01826db80d49, type: 3}
-  pickUpCount: 2
+  pickUpCount: 5
 --- !u!1 &727927093333187940
 GameObject:
   m_ObjectHideFlags: 0
